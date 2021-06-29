@@ -53,7 +53,7 @@ public class Turret : MonoBehaviour
         if (timer > cooldown)
         {
             timer = 0;
-            GameObject buf = Instantiate(BulletPrefab);
+            GameObject buf = PoolManager.S.RequestBullet();
             buf.transform.position = rifleStart.transform.position;
             buf.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - angleCorrection));
         }

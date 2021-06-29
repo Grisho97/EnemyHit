@@ -10,9 +10,9 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float    lifeTime = 3;
     [SerializeField] private int      attackPower = 1;
 
-    void Start()
+    void OnEnable()
     {
-        Invoke("DestroyMe", lifeTime);
+        Invoke("Hide", lifeTime);
     }
 
     private void Update()
@@ -34,11 +34,11 @@ public class Bullet : MonoBehaviour
         {
             Player.S.ChangeHealth(-attackPower);
         }
-        DestroyMe();   
+        Hide();   
     }
     
-    void DestroyMe()
+    void Hide()
     {
-        Destroy(gameObject);
+        this.gameObject.SetActive(false);
     }
 }

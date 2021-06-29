@@ -20,7 +20,7 @@ public class Laser : MonoBehaviour
     {
         isActive = false;
         Invoke("ActiveMode", timeOfPassiveBeam);
-        Invoke("Destroy", BossController.S.passiveTime - BossController.S.eyesFlyingTime);
+        Invoke("Hide", BossController.S.passiveTime - BossController.S.eyesFlyingTime);
     }
 
     private void ActiveMode()
@@ -30,9 +30,9 @@ public class Laser : MonoBehaviour
         InvokeRepeating("LaserAttackX",0,1);
     }
 
-    private void Destroy()
+    private void Hide()
     {
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
         BossController.S.eyesAnimation.SetTrigger("EyesBack");
     }
 

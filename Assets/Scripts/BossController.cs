@@ -127,7 +127,7 @@ public class BossController : MonoBehaviour
         GameObject[] lasers = new GameObject[2];
         for (int i = 0; i < lasers.Length; i++)
         {
-            lasers[i] = Instantiate(laserPrefab);
+            lasers[i] = LaserPool.S.RequestLaser();
             lasers[i].transform.position =
                 new Vector3(
                     Random.Range(Camera.main.GetComponent<BoxCollider>().bounds.min.x,
